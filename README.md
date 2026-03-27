@@ -12,7 +12,7 @@
 The prototype implements an **Encrypted Inverted Index** using a linked-list-of-nodes approach. 
 
 ### 1.1 Key Cryptographic Techniques:
-* **PRFs and PRPs**: We use HMAC-SHA256 to derive deterministic "trapdoors" ($f_y(w)$) and memory addresses ($\pi_z(w)$), ensuring the server cannot predict where data is stored.
+* **PRFs and PRPs**: We use HMAC-SHA256 to derive deterministic "trapdoors" $f_y(w)$ and memory addresses $\pi_z(w)$, ensuring the server cannot predict where data is stored.
 * **Chained Encryption**: Each node in the index is encrypted with a unique key. The key to decrypt node $i+1$ is stored inside the encrypted payload of node $i$.
 * **IND-CKA2 Security (Adaptive Padding)**: To protect against adaptive attacks—where an adversary chooses queries based on previous results—we implemented a **Padding Strategy**. Every keyword's result list is padded to a uniform length using dummy identifiers. This hides the "result size" leakage.
 
